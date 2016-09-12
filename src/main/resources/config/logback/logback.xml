@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 30초마다 설정 파일의 변경을 확인 & 파일이 변경되면 다시 로딩 -->
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d %p [%c][%F.%M:%L] [%thread] - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- profile > prod & test -->
+    <springProfile name="prod, test">
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>log/app.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- 파일이 하루에 한개씩 생성 -->
+                <fileNamePattern>log/app.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <!-- maxHistory 설정은 위 부분에 롤링 정책에 따라 적용된다고 보면됨, 이 설정데로 라면 30일이 지난 파일은 삭제가 됨 -->
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>%d %p [%c][%F.%M:%L] [%thread] - %m%n</pattern>
+            </encoder>
+        </appender>
+    </springProfile>
+
+    <logger name="org.springframework" level="info"/>
+    <logger name="org.hibernate" level="info"/>
+
+    <!-- profile > prod -->
+    <springProfile name="prod">
+        <logger name="com.test" level="info"/>
+        <root level="info">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+
+    <!-- profile > prod 제외 -->
+    <springProfile name="!prod">
+        <logger name="com.test" level="debug"/>
+    </springProfile>
+
+    <!-- profile > test -->
+    <springProfile name="test">
+        <root level="debug">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+
+    <!-- profile > local -->
+    <springProfile name="local">
+        <root level="debug">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+
+</configuration>
