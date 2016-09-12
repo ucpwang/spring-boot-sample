@@ -35,3 +35,8 @@
 - http://jsonobject.tistory.com/219
 - Spring boot devTools 관련 : http://blog.sbcoba.com/30
 - properties 관련 : http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+- Spring에서 YAML 파일 데이터 객체에 매핑하여 로드하기 : http://blog.saltfactory.net/java/load-yaml-file-in-spring.html
+- spring-boot tomcat 연동 관련 : http://blog.woniper.net/231
+- spring > Securing a Web Application : https://spring.io/guides/gs/securing-web
+- spring-boot using thymeleaf : https://springframework.guru/spring-boot-web-application-part-2-using-thymeleaf
+- spring-boot > ConfigurationProperties : http://docs.spring.io/spring-boot/docs/1.4.0.RELEASE/reference/html/configuration-metadata.html#configuration-metadata-annotation-processor
