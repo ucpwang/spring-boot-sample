@@ -1,7 +1,7 @@
 # spring-boot-sample project by ucpwang
 - GitHub : https://github.com/ucpwang/spring-boot-sample
 
-## TODO
+## mission
 - xss 관련 필터 적용
 - interceptor 구성
 - AOP 구성
@@ -13,23 +13,25 @@
   - 삭제
 - spring security 기본 적용
 - 샘플로직에 대한 단위테스트 작성
-- frount-end lib _적용_
+- frount-end lib 적용
 
-## DOING
+## Doing
 - thymeleaf > layout 템플릿 적용
 - mysql datasource 적용
 
-## DONE
+## Done
+- spring-boot > banner 적용
+- logback 설정 적용
 - thymeleaf 뷰리졸버 적용
 - profile 설정
 - properties -> yaml 적용
 - spring security > 복수 admin properties 에서 읽어서 적용하기
 
-## 진행상황
+## ing
 - http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-spring-mvc
   - 진행중
 
-## 참고한 링크
+## etc
 - http://jsonobject.tistory.com/219
 - Spring boot devTools 관련 : http://blog.sbcoba.com/30
 - properties 관련 : http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
