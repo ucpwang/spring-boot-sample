@@ -1,12 +1,13 @@
 package io.github.ucpwang.sample.web;
 
 import io.github.ucpwang.sample.support.ApplicationProperties;
+import io.github.ucpwang.sample.support.exception.CustomSampleException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
@@ -34,6 +35,16 @@ public class BasicController {
         return "HealthCheck OK";
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "login";
+    }
+
+
+    /*****************************************************************
+     * 이하 샘플 코드 맵핑
+     *****************************************************************/
+
     /**
      * [샘플] 로그 레벨 체크
      */
@@ -47,9 +58,37 @@ public class BasicController {
         return "log level check";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login() {
-        return "login";
+    /**
+     * [샘플] [ Matrix Variables ]
+     * @param pathVariable
+     * @param matrixVariable
+     * @return
+     */
+    @GetMapping("/mv/{pathVariable}")
+    @ResponseBody
+    public ResponseEntity<String> mv(@PathVariable String pathVariable, @MatrixVariable int matrixVariable) {
+        log.debug("pathVariable = {}", pathVariable);
+        log.debug("matrixVariable = {}", matrixVariable);
+        return new ResponseEntity<>("[샘플] [ Matrix Variables ]", HttpStatus.OK);
     }
+
+    @GetMapping("/sampleDefError")
+    @ResponseBody
+    public String sampleDefError() throws Exception {
+        if (true) {
+            throw new Exception("샘플로 에러(기본 Exception 에러)를 발생시킵니다.");
+        }
+        return "N/A";
+    }
+
+    @GetMapping("/sampleError")
+    @ResponseBody
+    public String sampleError() throws CustomSampleException {
+        if (true) {
+            throw new CustomSampleException("샘플로 에러(비즈니스 로직 관련 에러)를 발생시킵니다.");
+        }
+        return "N/A";
+    }
+
 
 }

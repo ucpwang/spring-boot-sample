@@ -1,19 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head lang="ko">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Spring Boot Sample By ucpwang</title>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="spring-boot-sample project by ucpwang" />
+    <meta name="author" content="ucpwang" />
+
+    <title>Spring Boot Sample By ucpwang > Sample</title>
 </head>
 <body>
 
-<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<div th:replace="layout/header :: header">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Static header</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
 
-<div th:text="${msg}">${msg}</div>
+    <div class="index-page">
+        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
+        <div th:text="${msg}">::: 'msg' 값이 뿌려지는 장소 :::</div>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </div>
+
+    <div th:replace="layout/footer :: footer">&copy; Static footer</div>
+
+</div>
 
 </body>
 </html>
+
+
 

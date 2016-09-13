@@ -16,6 +16,11 @@ import javax.annotation.Resource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring().antMatchers("/css/**", "/images/**", "/js/**", "/robots.txt");
+//    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -23,17 +28,41 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // ROOT
                 "/", "/main", "/home",
 
+                // public
+                "/css/**", "/images/**", "/js/**", "/robots.txt",
+
+                // error
+                "/error/**",
+
                 // ETC
-                "/_hcheck", "/logLevel"
+                "/_hcheck", "/logLevel", "/sampleError"
         };
 
         http.authorizeRequests()
-                .antMatchers(noAuthRequestMappings).permitAll().anyRequest().authenticated()
-                .and()
-                .formLogin().loginPage("/login").usernameParameter("user.id").passwordParameter("user.password").permitAll()
-                .and()
-                .logout().logoutSuccessUrl("/").permitAll();
+                .antMatchers(noAuthRequestMappings)
+                    .permitAll();
 
+        http.authorizeRequests()
+
+                .antMatchers("/login").anonymous()
+
+                .anyRequest().authenticated()
+                .and()
+
+                .formLogin()
+                    .loginPage("/login")
+                    .loginProcessingUrl("/login")
+                    .usernameParameter("user.id")
+                    .passwordParameter("user.password")
+                    .defaultSuccessUrl("/", true)
+                    .and()
+
+                .logout()
+                .logoutSuccessUrl("/");
+
+        //http.exceptionHandling().accessDeniedPage("/403.html");
+        http.exceptionHandling().accessDeniedPage("/");
+        http.sessionManagement().invalidSessionUrl("/");
     }
 
     @Resource
@@ -46,8 +75,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> inMemoryUserDetailsManagerConfigurer = auth.inMemoryAuthentication();
         applicationProperties.getAdmins().forEach(user ->
-                inMemoryUserDetailsManagerConfigurer.withUser((String) user.get("id")).password((String) user.get("pw")).roles("USER").and()
+                inMemoryUserDetailsManagerConfigurer.withUser((String) user.get("id")).password((String) user.get("pw")).roles("ADMIN", "USER").and()
         );
+
+        inMemoryUserDetailsManagerConfigurer.withUser("guest").password("guest").roles("USER");
 
     }
 }

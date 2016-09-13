@@ -6,11 +6,16 @@
 application:
   title: @project.groupId@.@project.artifactId@ (@project.version@)
 
-# embeded tomcat
 server:
+  # embeded tomcat
   port: 8080
   tomcat:
     uri-encoding: UTF-8 # Character encoding to use to decode the URI.
+
+  # SpringBoot default error page disable
+  error:
+    whitelabel:
+      enabled: false
 
 # banner
 banner:
@@ -47,11 +52,6 @@ spring:
       enabled: true # enable http encoding support
       force: true # force the configured encoding
 
-  # AOP -> TODO AOP 는 나중에 손보기
-  aop:
-    auto: true # Add @EnableAspectJAutoProxy.
-    proxy-target-class: false # Whether subclass-based (CGLIB) proxies are to be created (true) as opposed to standard Java interface-based proxies (false).
-
   # THYMELEAF (ThymeleafAutoConfiguration)
   thymeleaf:
     cache: true # Enable template caching.
@@ -63,24 +63,18 @@ spring:
     prefix: classpath:/templates/ # Prefix that gets prepended to view names when building a URL.
     suffix: .html # Suffix that gets appended to view names when building a URL.
 
-  # DEVTOOLS (DevToolsProperties) -> TODO DEVTOOLS 는 나중에 손보기
+  # AOP -> TODO AOP 는 나중에 손보기
+#  aop:
+#    auto: true # Add @EnableAspectJAutoProxy.
+#    proxy-target-class: false # Whether subclass-based (CGLIB) proxies are to be created (true) as opposed to standard Java interface-based proxies (false).
+
+  # DEVTOOLS (DevToolsProperties)
   devtools:
-    livereload:
-      enabled: true # Enable a livereload.com compatible server.\
-      port: 35729 # Server port.
     restart:
-      additional-exclude: # Additional patterns that should be excluded from triggering a full restart.
-      additional-paths: # Additional paths to watch for changes.
       enabled: true # Enable automatic restart.
       exclude: META-INF/maven/**,META-INF/resources/**,resources/**,static/**,public/**,templates/**,**/*Test.class,**/*Tests.class,git.properties # Patterns that should be excluded from triggering a full restart.
       poll-interval: 1000 # Amount of time (in milliseconds) to wait between polling for classpath changes.
       quiet-period: 400 # Amount of quiet time (in milliseconds) required without any classpath changes before a restart is triggered.
-      trigger-file: # Name of a specific file that when changed will trigger the restart check. If not specified any classpath file change will trigger the restart.
-
-# SpringBoot default error page disable
-error:
-  whitelabel:
-    enabled: false
 
 # logging
 logging:
@@ -137,6 +131,8 @@ sample:
 ########################################################################################################################
 spring:
   profiles: local
+  thymeleaf:
+      cache: false # Enable template caching.
 
 server:
   port: 8080
