@@ -84,3 +84,4 @@ $ mvn spring-boot:run
 - Spring MVC Matrix Variables : http://www.baeldung.com/spring-mvc-matrix-variables
 - howto-reload-java-classes-without-restarting : http://docs.spring.io/spring-boot/docs/current/reference/html/howto-hotswapping.html#howto-reload-java-classes-without-restarting
 - spring exception handling 관련 : https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc
+- thymeleaf > layout examples : https://github.com/thymeleaf/thymeleafexamples-layouts
