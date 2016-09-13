@@ -60,7 +60,7 @@ $ mvn spring-boot:run
 - properties -> yaml 적용
 - spring security > 복수 admin properties 에서 읽어서 적용하기
 
-## ing
+## history
 - http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-spring-mvc
   - 진행중
 
