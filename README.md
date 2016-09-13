@@ -63,6 +63,10 @@ $ mvn spring-boot:run
 ## history
 - http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-spring-mvc
   - 진행중
+- junit4 단위 테스트 작성중
+  - controller 테스트케이스 작성중 spring-boot 1.4로 넘어오면서 `@SpringApplicationConfiguration`가 Deprecated 됨을 인지
+    - 참고 : https://spring.io/blog/2016/04/15/testing-improvements-in-spring-boot-1-4
+    - `@SpringBootTest` 사용으로 훨씬 심플해진 느낌아닌 느낌 :)
 
 ## etc
 - http://jsonobject.tistory.com/219

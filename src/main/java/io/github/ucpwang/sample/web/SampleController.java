@@ -5,27 +5,30 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Slf4j
 @Controller
+@RequestMapping("/sample")
 public class SampleController {
 
     @Autowired
     private SampleService sampleService;
 
-    @RequestMapping(value = "/sample", method = RequestMethod.GET)
+    @GetMapping
     public String index(ModelMap modelMap) {
         modelMap.addAttribute("msg", sampleService.getSampleMsg());
         return "sample/index";
     }
 
-    @RequestMapping(value = "/sample/list", produces = {"application/json; charset=UTF-8"}, method = RequestMethod.GET)
+    @GetMapping("/list")
     @ResponseBody
-    public String[] list() {
-        return new String[] { "item1", "item2", "item3" };
+    public List<String> list() {
+        return sampleService.getList();
     }
 
 }
