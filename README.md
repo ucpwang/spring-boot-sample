@@ -1,6 +1,39 @@
 # spring-boot-sample project by ucpwang
 - GitHub : https://github.com/ucpwang/spring-boot-sample
 
+## spec
+- java 1.8.x
+- mvn 3.2.x
+- spring-boot 1.4.x
+- use lombok lib
+- use `thymeleaf` view template
+- use `mysql` database > jdbc
+- use `logback` logger
+
+## install && excute
+
+### install
+```bash
+$ git clone git@github.com:ucpwang/spring-boot-sample.git
+
+or
+
+$ git clone https://github.com/ucpwang/spring-boot-sample.git
+```
+
+### excute
+use maven build and java jar excute
+```bash
+$ mvn clean && mvn package
+$ java -jar ./target/spring-boot-sample-0.0.1-SNAPSHOT.jar
+```
+
+use maven > `spring-boot-maven-plugin` run
+```bash
+$ cd spring-boot-sample
+$ mvn spring-boot:run
+```
+
 ## mission
 - xss 관련 필터 적용
 - interceptor 구성
