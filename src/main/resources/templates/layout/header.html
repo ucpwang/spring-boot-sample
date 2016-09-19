@@ -28,7 +28,7 @@
                     <a href="/login" th:href="@{/login}">Login</a>
                 </li>
                 <li sec:authorize="isAuthenticated()">
-                    <form th:action="@{/logout}" method="post">
+                    <form class="navbar-form navbar-right" th:action="@{/logout}" method="post">
                         <button type="submit" class="btn btn-success">Logout</button>
                     </form>
                 </li>
