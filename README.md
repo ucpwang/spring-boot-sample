@@ -50,7 +50,6 @@ $ mvn spring-boot:run
 ## Doing
 - thymeleaf > layout 템플릿 적용
 - mysql datasource 적용
-- 로그인 페이지 부트스트랩 UI 적용
 - error 페이지에 대한 전처리
 - spring security 기본 적용
 - 샘플로직에 대한 단위테스트 작성
@@ -63,6 +62,8 @@ $ mvn spring-boot:run
 - profile 설정
 - properties -> yaml 적용
 - spring security > 복수 admin properties 에서 읽어서 적용하기
+- 로그인 페이지 UI 적용
+  - http://codepen.io/DamirZ/pen/dYpoZY
 
 ## history
 - spring-boot reference > 진행중 : http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-sql

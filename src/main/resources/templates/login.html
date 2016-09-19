@@ -4,23 +4,80 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="spring-boot-sample project by ucpwang" />
+    <meta name="author" content="ucpwang" />
+
     <title>Spring Boot Sample By ucpwang > login</title>
+
+    <link rel="stylesheet prefetch" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="../public/css/login.css" />
+
 </head>
 <body>
 
-<div th:if="${param.error}">
-    Invalid username and password.
-</div>
+<form class="login" th:action="@{/login}" method="POST">
 
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
+    <fieldset>
 
-<form th:action="@{/login}" method="post">
-    <div><label> User Name : <input type="text" name="user.id"/> </label></div>
-    <div><label> Password: <input type="password" name="user.password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
+        <legend class="legend">Login</legend>
+
+        <div class="input">
+            <input type="text" name="user.id" placeholder="User Name" required="required" />
+            <span><i class="fa fa-user"></i></span>
+        </div>
+
+        <div class="input">
+            <input type="password" name="user.password" placeholder="Password" required="required" />
+            <span><i class="fa fa-lock"></i></span>
+        </div>
+
+        <button type="submit" class="submit"><i class="fa fa-long-arrow-right"></i></button>
+
+    </fieldset>
+
+    <div class="feedback"></div>
+
 </form>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+
+        $('.input').on({
+            focusin: function() {
+                $(this).find('span').animate({ 'opacity':'0' }, 200);
+            },
+            focusout: function() {
+                $(this).find('span').animate({ 'opacity':'1' }, 300);
+            }
+        });
+
+        /*
+        비동기 로그인시 애니메이션 관련
+        $('.login').submit(function() {
+            $(this).find('.submit i').removeAttr('class').addClass('fa fa-check').css({ 'color':'#fff' });
+            $('.submit').css({ 'background':'#2ecc71', 'border-color':'#2ecc71' });
+            $('.feedback').show().animate({ 'opacity':'1', 'bottom':'-80px' }, 400);
+            $('input').css({ 'border-color':'#2ecc71' });
+        });
+        */
+
+    });
+</script>
+
+<script type="text/javascript" th:if="${param.error}">
+    $(function() {
+        $(this).find('.submit i').removeAttr('class').addClass('fa fa-check').css({ 'color':'#fff' });
+        $('.submit').css({ 'background':'red', 'border-color':'red' });
+        $('.feedback').text('Invalid username and password.');
+        $('.feedback').addClass('error');
+        $('.feedback').show().animate({ 'opacity':'1', 'bottom':'-80px' }, 400);
+        $('input').css({ 'border-color':'red' });
+    });
+</script>
 
 </body>
 </html>
