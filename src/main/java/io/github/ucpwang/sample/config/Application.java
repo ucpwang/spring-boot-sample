@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-// 일단 주석 @SpringBootApplication
 @Configuration
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
 @ComponentScan("io.github.ucpwang.sample")
@@ -19,7 +18,5 @@ public class Application extends WebMvcConfigurerAdapter {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
-
 
 }

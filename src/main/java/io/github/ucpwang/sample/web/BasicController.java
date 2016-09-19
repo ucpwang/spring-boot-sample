@@ -4,8 +4,6 @@ import io.github.ucpwang.sample.support.ApplicationProperties;
 import io.github.ucpwang.sample.support.exception.CustomSampleException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,17 +58,15 @@ public class BasicController {
 
     /**
      * [샘플] [ Matrix Variables ]
-     * @param pathVariable
-     * @param matrixVariable
-     * @return
      */
-    @GetMapping("/mv/{pathVariable}")
-    @ResponseBody
-    public ResponseEntity<String> mv(@PathVariable String pathVariable, @MatrixVariable int matrixVariable) {
-        log.debug("pathVariable = {}", pathVariable);
-        log.debug("matrixVariable = {}", matrixVariable);
-        return new ResponseEntity<>("[샘플] [ Matrix Variables ]", HttpStatus.OK);
-    }
+// 메트릭스 베리어블 관련 내용 주석
+//    @GetMapping("/mv/{pathVariable}")
+//    @ResponseBody
+//    public ResponseEntity<String> mv(@PathVariable String pathVariable, @MatrixVariable int matrixVariable) {
+//        log.debug("pathVariable = {}", pathVariable);
+//        log.debug("matrixVariable = {}", matrixVariable);
+//        return new ResponseEntity<>("[샘플] [ Matrix Variables ]", HttpStatus.OK);
+//    }
 
     @GetMapping("/sampleDefError")
     @ResponseBody
