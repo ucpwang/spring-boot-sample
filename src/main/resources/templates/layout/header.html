@@ -19,13 +19,16 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li th:classappend="${page == 'home' ? 'active' : ''}"><a href="#" th:href="@{/}">Home</a></li>
-                <li th:classappend="${page == 'sample' ? 'active' : ''}"><a href="#" th:href="@{/sample}">Sample</a></li>
+                <li th:classappend="${menu.id == 'home' ? 'active' : ''}"><a href="#" th:href="@{/}">Home</a></li>
+                <li th:classappend="${menu.id == 'sample' ? 'active' : ''}"><a href="#" th:href="@{/sample}">Sample</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
                 <li sec:authorize="!isAuthenticated()">
                     <a href="/login" th:href="@{/login}">Login</a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:inline="text">[[${#httpServletRequest.remoteUser}]]</a>
                 </li>
                 <li sec:authorize="isAuthenticated()">
                     <form class="navbar-form navbar-right" th:action="@{/logout}" method="post">

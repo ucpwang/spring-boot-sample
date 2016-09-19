@@ -5,7 +5,10 @@ import io.github.ucpwang.sample.support.exception.CustomSampleException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 
 @Slf4j
 @Controller
@@ -15,7 +18,12 @@ public class BasicController {
     private ApplicationProperties applicationProperties;
 
     @RequestMapping(value = { "/", "/home", "/main" })
-    public String index() {
+    public String index(Model model) {
+
+        // TODO 메뉴 관리 / 인터셉터 영역으로 옮겨야 함
+        HashMap<String, String> menu = new HashMap<>();
+        menu.put("id", "home");
+        model.addAttribute("menu", menu);
 
         log.debug("===== 환경 변수 불러와서 찍어보기 =====");
         log.debug("ApplicationProperties.getTestmsg = {}", applicationProperties.getTestmsg());

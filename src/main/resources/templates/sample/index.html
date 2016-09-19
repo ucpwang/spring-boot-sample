@@ -8,6 +8,22 @@
     <meta name="author" content="ucpwang" />
 
     <title>Spring Boot Sample By ucpwang > Sample</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+
+    <link rel="stylesheet" th:href="@{/css/common.css}" href="../public/css/common.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 <body>
 
@@ -20,26 +36,37 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">p1</a></li>
+                    <li><a href="#">p2</a></li>
+                    <li><a href="#">p3</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
-<div class="container">
+
+<div id="sampleBox" class="container">
 
     <div class="index-page">
-        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
-        <div th:text="${msg}">::: 'msg' 값이 뿌려지는 장소 :::</div>
+        <div class="row">
+            <div class="col-md-12">
+                <h1 th:text="${msg}">::: 'msg' 값이 뿌려지는 장소 :::</h1>
+            </div>
+        </div>
 
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-        </form>
     </div>
 
     <div th:replace="layout/footer :: footer">&copy; Static footer</div>
 
 </div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </body>
 </html>
