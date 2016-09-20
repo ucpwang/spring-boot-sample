@@ -9,9 +9,8 @@
 
     <title>Spring Boot Sample By ucpwang > login</title>
 
-    <link rel="stylesheet prefetch" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
-
-    <link rel="stylesheet" th:href="@{/css/login.css}" href="../public/css/login.css" />
+    <link rel="stylesheep prefetch" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" th:href="@{/webjars/font-awesome/4.6.3/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" href="../public/css/login.css" th:href="@{/css/login.css}"/>
 
 </head>
 <body>
@@ -40,8 +39,8 @@
 
 </form>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="//code.jquery.com/jquery-3.1.0.min.js" th:src="@{/webjars/jquery/3.1.0/js/jquery.min.js}"></script>
 
 <script type="text/javascript">
     $(function() {

@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class BasicInterceptor extends HandlerInterceptorAdapter {
 
-    // TODO 인터셉터 적용
-
     @Override
     public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler) throws Exception{
         log.debug("========= preHandle Interceptor Start ========");

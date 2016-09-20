@@ -35,10 +35,8 @@ $ mvn spring-boot:run
 ```
 
 ## mission
-- interceptor 구성
 - CORS
 - CSRF
-- XSS
 - AOP 구성
 - 샘플 RESTful API 구성
   - 목록조회
@@ -46,24 +44,38 @@ $ mvn spring-boot:run
   - 등록
   - 수정
   - 삭제
+- 샘플로직에 대한 단위테스트 작성
+- mysql datasource 적용
+- favicon
+- 다국어 전처리
+- 로그인 > 리멤버미
+  - http://blog.naver.com/PostView.nhn?blogId=wizardkyn&logNo=220663952961
 
 ## Doing
-- thymeleaf > layout 템플릿 적용
-- mysql datasource 적용
-- error 페이지에 대한 전처리
 - spring security 기본 적용
-- 샘플로직에 대한 단위테스트 작성
-- frount-end lib 적용
+- thymeleaf
+  - layout 적용 > thymeleaf-layout-dialect
+- error 페이지에 대한 전처리 적용
+- XSS 필터 적용 : https://github.com/naver/lucy-xss-filter
 
 ## Done
 - spring-boot > banner 적용
 - logback 설정 적용
-- thymeleaf 뷰리졸버 적용
+- thymeleaf
+  - 뷰리졸버 적용
 - profile 설정
 - properties -> yaml 적용
 - spring security > 복수 admin properties 에서 읽어서 적용하기
 - 로그인 페이지 UI 적용
-  - http://codepen.io/DamirZ/pen/dYpoZY
+  - 참고 : http://codepen.io/DamirZ/pen/dYpoZY
+- interceptor 구성
+  - BasicInterceptor 적용
+- frount-end lib 적용
+    - webjars 적용
+      - http://www.webjars.org/documentation#springboot
+      - http://adrenal.tistory.com/14
+      - 자동 설정에 webjars 관련 설정하는 부분을 확인할 수 있음 -> 고로 별도 설정하지 않아도 됨
+        - org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter.addResourceHandlers
 
 ## history
 - spring-boot reference > 진행중 : http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-sql
@@ -71,6 +83,7 @@ $ mvn spring-boot:run
   - controller 테스트케이스 작성중 spring-boot 1.4로 넘어오면서 `@SpringApplicationConfiguration`가 Deprecated 됨을 인지
     - 참고 : https://spring.io/blog/2016/04/15/testing-improvements-in-spring-boot-1-4
     - `@SpringBootTest` 사용으로 훨씬 심플해진 느낌아닌 느낌 :)
+- thymeleaf-layout-dialect 가 제대로 적용되지 않는다....으악...뭐지;;
 
 ## etc
 - http://jsonobject.tistory.com/219
@@ -80,9 +93,12 @@ $ mvn spring-boot:run
 - spring-boot tomcat 연동 관련 : http://blog.woniper.net/231
 - spring > Securing a Web Application : https://spring.io/guides/gs/securing-web
 - spring > security 관련 : http://www.namooz.com/2015/12/07/spring-boot-thymeleaf-10-spring-boot-security-final
-- spring-boot using thymeleaf : https://springframework.guru/spring-boot-web-application-part-2-using-thymeleaf
 - spring-boot > ConfigurationProperties : http://docs.spring.io/spring-boot/docs/1.4.0.RELEASE/reference/html/configuration-metadata.html#configuration-metadata-annotation-processor
 - Spring MVC Matrix Variables : http://www.baeldung.com/spring-mvc-matrix-variables
 - howto-reload-java-classes-without-restarting : http://docs.spring.io/spring-boot/docs/current/reference/html/howto-hotswapping.html#howto-reload-java-classes-without-restarting
 - spring exception handling 관련 : https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc
-- thymeleaf > layout examples : https://github.com/thymeleaf/thymeleafexamples-layouts
+- spring-boot using thymeleaf : https://springframework.guru/spring-boot-web-application-part-2-using-thymeleaf
+  - thymeleaf > layout
+    - default examples : https://github.com/thymeleaf/thymeleafexamples-layouts
+    - https://blog.outsider.ne.kr/1004
+    - https://github.com/ultraq/thymeleaf-layout-dialect / https://ultraq.github.io/thymeleaf-layout-dialect

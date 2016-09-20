@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/", "/main", "/home",
 
                 // public
-                "/css/**", "/images/**", "/js/**", "/robots.txt",
+                "/webjars/**", "/css/**", "/images/**", "/js/**", "/robots.txt",
 
                 // error
                 "/error/**",
@@ -39,26 +39,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         };
 
         http.authorizeRequests()
-                .antMatchers(noAuthRequestMappings)
-                    .permitAll();
 
-        http.authorizeRequests()
+                .antMatchers(noAuthRequestMappings).permitAll()
 
                 .antMatchers("/login").anonymous()
 
                 .anyRequest().authenticated()
-                .and()
 
-                .formLogin()
+                .and()
+                    .formLogin()
                     .loginPage("/login")
                     .loginProcessingUrl("/login")
+                    .defaultSuccessUrl("/")
+
                     .usernameParameter("user.id")
                     .passwordParameter("user.password")
-                    .defaultSuccessUrl("/", true)
-                    .and()
 
-                .logout()
-                .logoutSuccessUrl("/");
+                .and()
+                    .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/");
 
         //http.exceptionHandling().accessDeniedPage("/403.html");
         http.exceptionHandling().accessDeniedPage("/");

@@ -9,41 +9,24 @@
 
     <title>Spring Boot Sample By ucpwang</title>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" href="../public/css/common.css" th:href="@{/css/common.css}"/>
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
-
-    <link rel="stylesheet" th:href="@{/css/common.css}" href="../public/css/common.css" />
+    <script src="//code.jquery.com/jquery-3.1.0.min.js" th:src="@{/webjars/jquery/3.1.0/js/jquery.min.js}"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.7/bootstrap.min.js}"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js" th:src="@{/webjars/html5shiv/3.7.3/html5shiv.min.js}"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js" th:src="@{/webjars/respond/1.4.2/respond.min.js}"></script>
     <![endif]-->
 
 </head>
 <body>
 
-<div th:replace="layout/header :: header">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Static header</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">p1</a></li>
-                    <li><a href="#">p2</a></li>
-                    <li><a href="#">p3</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+<div th:replace="layout/layout::header">header</div>
 
 <div id="indexBox" class="container">
 
@@ -63,16 +46,11 @@
 
     <hr/>
 
-    <div th:replace="layout/footer :: footer">&copy; Static footer</div>
+    <div th:replace="layout/layout::footer">footer</div>
 
 </div>
 
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </body>
 </html>
