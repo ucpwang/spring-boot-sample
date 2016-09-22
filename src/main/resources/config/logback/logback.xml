@@ -29,7 +29,7 @@
 
     <!-- profile > prod -->
     <springProfile name="prod">
-        <logger name="com.test" level="info"/>
+        <logger name="io.github.ucpwang.sample" level="info"/>
         <root level="info">
             <appender-ref ref="STDOUT"/>
             <appender-ref ref="FILE"/>
@@ -38,7 +38,7 @@
 
     <!-- profile > prod 제외 -->
     <springProfile name="!prod">
-        <logger name="com.test" level="debug"/>
+        <logger name="io.github.ucpwang.sample" level="debug"/>
     </springProfile>
 
     <!-- profile > test -->
@@ -51,6 +51,12 @@
 
     <!-- profile > local -->
     <springProfile name="local">
+
+        <logger name="org.thymeleaf" level="debug"/>
+        <logger name="org.thymeleaf.TemplateEngine.CONFIG" level="trace"/>
+        <logger name="org.thymeleaf.TemplateEngine.TIMER" level="trace"/>
+        <logger name="org.thymeleaf.TemplateEngine.cache.TEMPLATE_CACHE" level="trace"/>
+
         <root level="debug">
             <appender-ref ref="STDOUT"/>
         </root>
