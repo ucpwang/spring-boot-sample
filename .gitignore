@@ -5,7 +5,4 @@
 *.iml
 /target
 /.idea
-/.mvn
 /log
-mvnw
-mvnw.cmd
