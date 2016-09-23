@@ -16,11 +16,6 @@ import javax.annotation.Resource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/css/**", "/images/**", "/js/**", "/robots.txt");
-//    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -51,7 +46,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login")
                     .loginProcessingUrl("/login")
                     .defaultSuccessUrl("/")
-
                     .usernameParameter("user.id")
                     .passwordParameter("user.password")
 
@@ -81,4 +75,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         inMemoryUserDetailsManagerConfigurer.withUser("guest").password("guest").roles("USER");
 
     }
+
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring().antMatchers("/css/**", "/images/**", "/js/**", "/robots.txt");
+//    }
+
 }
