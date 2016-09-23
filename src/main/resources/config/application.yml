@@ -55,7 +55,7 @@ spring:
   # THYMELEAF (ThymeleafAutoConfiguration)
   thymeleaf:
     enabled: true # Enable MVC Thymeleaf view resolution.
-    cache: false # Enable template caching.
+    cache: true # Enable template caching.
     check-template-location: true # Check that the templates location exists.
     content-type: text/html # Content-Type value.
     encoding: UTF-8 # Template encoding.
@@ -83,10 +83,12 @@ logging:
 # [sample] application properties
 sample:
   props:
+    project:
+      title: Sample
     admins:
       -
-        id: admin1
-        pw: admin1
+        id: admin
+        pw: admin
       -
         id: admin2
         pw: admin2
