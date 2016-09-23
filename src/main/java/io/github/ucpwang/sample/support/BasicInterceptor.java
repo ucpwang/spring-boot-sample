@@ -12,7 +12,8 @@ public class BasicInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler) throws Exception{
-        log.debug("========= preHandle Interceptor Start ========");
+
+        log.debug("========= preHandle Interceptor [{}] Start ========", req.getRequestURI());
 
         req.setCharacterEncoding("UTF-8");
         res.setHeader("cache-control","no-cache");
@@ -20,19 +21,20 @@ public class BasicInterceptor extends HandlerInterceptorAdapter {
         res.setHeader("expires","-1");
         res.setHeader("pragma","no-cache");
 
-        log.debug("========= preHandle Interceptor End ========");
+        log.debug("========= preHandle Interceptor [{}] End ========", req.getRequestURI());
+
         return super.preHandle(req, res, handler);
     }
 
     @Override
     public void postHandle(HttpServletRequest httpservletrequest, HttpServletResponse httpservletresponse, Object obj, ModelAndView modelandview)throws Exception{
-        log.debug("========= postHandle Interceptor ========");
+        log.info("========= postHandle Interceptor ========");
     }
 
 
     @Override
     public void afterCompletion(HttpServletRequest httpservletrequest, HttpServletResponse httpservletresponse, Object obj, Exception exception)throws Exception{
-        log.debug("========= afterCompletion Interceptor ========");
+        log.info("========= afterCompletion Interceptor ========");
     }
 
 }
