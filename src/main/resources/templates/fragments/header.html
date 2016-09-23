@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head lang="ko">
-    <!-- any resources -->
-</head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head><!-- ... --></head>
 <body>
-
     <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
         <div class="container">
             <div class="navbar-header">
@@ -22,23 +19,19 @@
                     <li th:classappend="${menu.id == 'sample' ? 'active' : ''}"><a href="#" th:href="@{/sample}">Sample</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-
-                    <li sec:authorize="!isAuthenticated()">
-                        <a href="/login" th:href="@{/login}">Login</a>
-                    </li>
-
-                    <li sec:authorize="isAuthenticated()"><a sec:authentication="name">test <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span></a></li>
-
-                    <li sec:authorize="isAuthenticated()">
-                        <form class="navbar-form navbar-right" th:action="@{/logout}" method="POST">
-                            <button type="submit" class="btn btn-success">Logout</button>
-                        </form>
-                    </li>
-
+                    <li sec:authorize="isAnonymous()"><a href="/login" th:href="@{/login}">Login</a></li>
+                    <th:block sec:authorize="isAuthenticated()">
+                        <li><a sec:authentication="name">이름</a></li>
+                        <li><a sec:authentication="principal.authorities">권한</a></li>
+                        <li>
+                            <form class="navbar-form navbar-right" th:action="@{/logout}" method="POST">
+                                <button type="submit" class="btn btn-success">Logout</button>
+                            </form>
+                        </li>
+                    </th:block>
                 </ul>
             </div>
         </div>
     </div>
-
 </body>
 </html>

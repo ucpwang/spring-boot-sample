@@ -1,13 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head lang="ko">
-    <!-- any resources -->
-</head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head><!-- ... --></head>
 <body>
-
     <div th:fragment="footer">
         &copy; 2016 Spring Boot Sample By ucpwang
-    </div>
 
+        <!-- 개발 확인용 -->
+        <div style="color: white">
+            <ul>
+                <li>
+                    profile :
+                    <span th:each="profile : ${@environment.getActiveProfiles()}">
+                        <th:block th:if="${profileStat.index > 0}">,</th:block>
+                        <th:block th:text="${profile}"/>
+                    </span>
+                </li>
+                <li>
+                    title :
+                    <span th:text="${@environment.getProperty('sample.props.project.title')}"></span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
 </body>
 </html>

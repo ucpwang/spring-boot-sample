@@ -21,22 +21,27 @@ or
 $ git clone https://github.com/ucpwang/spring-boot-sample.git
 ```
 
-### excute
+### run
+run with `mvnw`
+```bash
+$ chmod 700 ./mvnw && ./mvnw spring-boot:run
+```
+or
+
 use maven build and java jar excute
 ```bash
 $ mvn clean && mvn package
 $ java -jar ./target/spring-boot-sample-0.0.1-SNAPSHOT.jar
 ```
+or
 
 use maven > `spring-boot-maven-plugin` run
 ```bash
-$ cd spring-boot-sample
 $ mvn spring-boot:run
 ```
 
 ## mission
 - CORS
-- CSRF
 - AOP 구성
 - 샘플 RESTful API 구성
   - 목록조회
@@ -50,12 +55,9 @@ $ mvn spring-boot:run
 - 다국어 전처리
 - 로그인 > 리멤버미
   - http://blog.naver.com/PostView.nhn?blogId=wizardkyn&logNo=220663952961
+- webjars-locator 적용
 
 ## Doing
-- spring security 기본 적용
-- thymeleaf
-  - layout 적용 > thymeleaf-layout-dialect
-- error 페이지에 대한 전처리 적용
 - XSS 필터 적용 : https://github.com/naver/lucy-xss-filter
 
 ## Done
@@ -76,16 +78,20 @@ $ mvn spring-boot:run
       - http://adrenal.tistory.com/14
       - 자동 설정에 webjars 관련 설정하는 부분을 확인할 수 있음 -> 고로 별도 설정하지 않아도 됨
         - org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter.addResourceHandlers
+- spring security 기본 적용
+- thymeleaf
+  - layout 적용 > @Layout 어노테이션 인터셉트 방식 적용 (http://blog.codeleak.pl/2013/11/thymeleaf-template-layouts-in-spring.html)
+- error 페이지에 대한 전처리 적용
 
-## history
-- spring-boot reference > 진행중 : http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#boot-features-sql
+## note
 - junit4 단위 테스트 
   - controller 테스트케이스 작성중 spring-boot 1.4로 넘어오면서 `@SpringApplicationConfiguration`가 Deprecated 됨을 인지
     - 참고 : https://spring.io/blog/2016/04/15/testing-improvements-in-spring-boot-1-4
     - `@SpringBootTest` 사용으로 훨씬 심플해진 느낌아닌 느낌 :)
-- thymeleaf-layout-dialect 가 제대로 적용되지 않는다....으악...뭐지;;
+- `thymeleaf-layout-dialect` 미적용
 
 ## etc
+- spring-boot reference : http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/
 - http://jsonobject.tistory.com/219
 - Spring boot devTools 관련 : http://blog.sbcoba.com/30
 - properties 관련 : http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
@@ -98,6 +104,7 @@ $ mvn spring-boot:run
 - howto-reload-java-classes-without-restarting : http://docs.spring.io/spring-boot/docs/current/reference/html/howto-hotswapping.html#howto-reload-java-classes-without-restarting
 - spring exception handling 관련 : https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc
 - spring-boot using thymeleaf : https://springframework.guru/spring-boot-web-application-part-2-using-thymeleaf
+  - thymeleaf guide : http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#a-multi-language-welcome
   - thymeleaf > layout
     - default examples : https://github.com/thymeleaf/thymeleafexamples-layouts
     - https://blog.outsider.ne.kr/1004

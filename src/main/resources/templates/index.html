@@ -1,57 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="spring-boot-sample project by ucpwang" />
-    <meta name="author" content="ucpwang" />
-
-    <title>Spring Boot Sample By ucpwang</title>
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
-    <link rel="stylesheet" href="../public/css/common.css" th:href="@{/css/common.css}"/>
-
-    <script src="//code.jquery.com/jquery-3.1.0.min.js" th:src="@{/webjars/jquery/3.1.0/js/jquery.min.js}"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.7/bootstrap.min.js}"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js" th:src="@{/webjars/html5shiv/3.7.3/html5shiv.min.js}"></script>
-    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js" th:src="@{/webjars/respond/1.4.2/respond.min.js}"></script>
-    <![endif]-->
-
-</head>
+<head></head>
 <body>
-
-<div th:replace="layout/layout::header">header</div>
-
-<div id="indexBox" class="container">
-
-    <div class="row">
-        <div class="col-md-12">
-            <ul>
-                <li><a target="_blank" th:href="@{/_hcheck}" href="#">/_hcheck</a></li>
-                <li><a target="_blank" th:href="@{/logLevel}" href="#">/logLevel</a></li>
-                <!-- 메트릭스 베리어블 관련 내용 주석
-                <li><a target="_blank" th:href="@{/mv/test;matrixVariable=1}" href="#">/mv/{pathVariable};a={matrixVariable}</a></li>
-                -->
-                <li><a target="_blank" th:href="@{/sampleDefError}" href="#">/sampleDefError</a></li>
-                <li><a target="_blank" th:href="@{/sampleError}" href="#">/sampleError</a></li>
-            </ul>
+    <div id="indexBox" th:fragment="content">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>/index.html</h1>
+                <ul>
+                    <li><a target="_blank" href="#" th:href="@{/_hcheck}">/_hcheck</a></li>
+                    <li><a target="_blank" href="#" th:href="@{/logLevel}">/logLevel</a></li>
+                    <li><a target="_blank" href="#" th:href="@{/mv/test;matrixVariable=1}">/mv/{pathVariable};a={matrixVariable}</a></li>
+                    <li><a target="_blank" href="#" th:href="@{/sampleDefError}">/sampleDefError</a></li>
+                    <li><a target="_blank" href="#" th:href="@{/sampleError}">/sampleError</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-
-    <hr/>
-
-    <div th:replace="layout/layout::footer">footer</div>
-
-</div>
-
-
-
 </body>
 </html>
 

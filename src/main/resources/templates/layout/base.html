@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="spring-boot-sample project by ucpwang" />
+    <meta name="author" content="ucpwang" />
+
+    <title th:replace="${view} :: title">[[${@environment.getProperty('sample.props.project.title')}]];</title>
+
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}"/>
+    <link rel="stylesheet" href="../../public/css/common.css" th:href="@{/css/common.css}"/>
+
+    <script src="//code.jquery.com/jquery-3.1.0.min.js" th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js" th:src="@{/webjars/html5shiv/3.7.3/html5shiv.min.js}"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js" th:src="@{/webjars/respond/1.4.2/respond.min.js}"></script>
+    <![endif]-->
+</head>
+<body>
+    <!-- header - s -->
+    <div th:replace="fragments/header :: header">
+        base :: header
+    </div>
+    <!-- header - e -->
+
+    <div class="container">
+        <!--@thymesVar id="view" type="String"-->
+        <div th:replace="${view} :: content">
+            base :: content
+        </div>
+
+        <!-- footer - s -->
+        <hr/>
+        <div th:replace="fragments/footer :: footer">
+            base :: footer
+        </div>
+        <!-- footer - e -->
+    </div>
+</body>
+</html>

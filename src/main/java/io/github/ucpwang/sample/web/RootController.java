@@ -1,9 +1,12 @@
 package io.github.ucpwang.sample.web;
 
 import io.github.ucpwang.sample.support.ApplicationProperties;
+import io.github.ucpwang.sample.support.annotation.Layout;
 import io.github.ucpwang.sample.support.exception.CustomSampleException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +15,12 @@ import java.util.HashMap;
 
 @Slf4j
 @Controller
-public class BasicController {
+public class RootController {
 
     @Autowired
     private ApplicationProperties applicationProperties;
 
+    @Layout(value = "layout/base")
     @RequestMapping(value = { "/", "/home", "/main" })
     public String index(Model model) {
 
@@ -41,6 +45,7 @@ public class BasicController {
         return "HealthCheck OK";
     }
 
+    @Layout(Layout.NONE)
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
         return "login";
@@ -67,14 +72,13 @@ public class BasicController {
     /**
      * [샘플] [ Matrix Variables ]
      */
-// 메트릭스 베리어블 관련 내용 주석
-//    @GetMapping("/mv/{pathVariable}")
-//    @ResponseBody
-//    public ResponseEntity<String> mv(@PathVariable String pathVariable, @MatrixVariable int matrixVariable) {
-//        log.debug("pathVariable = {}", pathVariable);
-//        log.debug("matrixVariable = {}", matrixVariable);
-//        return new ResponseEntity<>("[샘플] [ Matrix Variables ]", HttpStatus.OK);
-//    }
+    @GetMapping("/mv/{pathVariable}")
+    @ResponseBody
+    public ResponseEntity<String> mv(@PathVariable String pathVariable, @MatrixVariable int matrixVariable) {
+        log.debug("pathVariable = {}", pathVariable);
+        log.debug("matrixVariable = {}", matrixVariable);
+        return new ResponseEntity<>("[샘플] [ Matrix Variables ]", HttpStatus.OK);
+    }
 
     @GetMapping("/sampleDefError")
     @ResponseBody

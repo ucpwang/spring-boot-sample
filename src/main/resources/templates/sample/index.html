@@ -1,34 +1,17 @@
 <!DOCTYPE html>
-<html lang="ko"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout/layout">
-
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>sample</title>
+    <title th:fragment="title">sample > index</title>
 </head>
-
 <body>
-
-    <div layout:fragment="header">sample header</div>
-
-    <div class="container">
-
-        <div id="sampleBox" class="container" layout:fragment="content">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 th:text="${msg}">::: 'msg' 값이 뿌려지는 장소 :::</h1>
-                </div>
+    <div id="sampleBox" th:fragment="content">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>/sample/index.html</h1>
+                <!--@thymesVar id="msg" type="String"-->
+                <h2 th:text="${msg}">::: 'msg' 값 :::</h2>
             </div>
-
         </div>
-
-        <hr/>
-
-        <div layout:fragment="footer">sample footer</div>
-
     </div>
-
 </body>
 </html>
