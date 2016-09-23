@@ -15,14 +15,18 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.0.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <!--
+        주석의 이유 : http://stackoverflow.com/questions/37270322/spring-boot-security-thymeleaf-iprocessordialect-class-missing
         <thymeleafspringsecurity4.version>3.0.0.RELEASE</thymeleafspringsecurity4.version>
+        -->
+        <thymeleafspringsecurity4.version>2.1.2.RELEASE</thymeleafspringsecurity4.version>
         <lucyxss.version>1.6.3</lucyxss.version>
         <guava.version>19.0</guava.version>
         <gson.version>2.7</gson.version>
@@ -56,14 +60,12 @@
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity4</artifactId>
             <version>${thymeleafspringsecurity4.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>net.sourceforge.nekohtml</groupId>
             <artifactId>nekohtml</artifactId>
             <version>${nekohtml.version}</version>
         </dependency>
-
 
         <!-- devtools -->
         <dependency>
