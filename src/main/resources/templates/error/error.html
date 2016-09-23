@@ -5,6 +5,7 @@
     <meta name="robots" content="noindex" />
 
     <title>Error Page</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
     <style type="text/css">
@@ -16,42 +17,42 @@
 
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="error-template">
-                <h1>Oops!</h1>
-                <h2>이용에 불편을 드려 죄송합니다.</h2>
-                <div class="error-details" th:text="${exception.message}">
-                    ::: 에러메세지 출력하는 장소 :::
-                </div>
-                <div class="error-actions">
-                    <a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span> Take Me Home </a><a href="/" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="error-template">
+                    <h1>Oops!</h1>
+                    <h2>이용에 불편을 드려 죄송합니다.</h2>
+                    <div class="error-details" th:text="${exception.message}">
+                        ::: 에러메세지 출력하는 장소 :::
+                    </div>
+                    <div class="error-actions">
+                        <a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span> Take Me Home </a><a href="/" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- error log -->
-<div id="errorLog" style="display: none; padding-left: 50px;" th:inline="text">
-    <h2>Failed URL</h2>
-    <p>: [[${url}]]</p>
-    <h2>Exception</h2>
-    <p>: [[${exception.message}]]</p>
-    <h2>exception.stackTrace</h2>
-    <p th:each="ste : ${exception.stackTrace}" th:text="${ste}">...</p>
-</div>
+    <!-- error log -->
+    <div id="errorLog" style="display: none; padding-left: 50px;" th:inline="text">
+        <h2>Failed URL</h2>
+        <p>: [[${url}]]</p>
+        <h2>Exception</h2>
+        <p>: [[${exception.message}]]</p>
+        <h2>exception.stackTrace</h2>
+        <p th:each="ste : ${exception.stackTrace}" th:text="${ste}">...</p>
+    </div>
 
-<script src="//code.jquery.com/jquery-3.1.0.min.js" th:src="@{/webjars/jquery/3.1.0/js/jquery.min.js}"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.7/bootstrap.min.js}"></script>
-<script type="text/javascript">
+    <script src="//code.jquery.com/jquery-3.1.0.min.js" th:src="@{/webjars/jquery/3.1.0/jquery.min.js}"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <script type="text/javascript">
 
-    // error log show function
-    function showError() {
-        document.getElementById('errorLog').style.display = 'block';
-    }
+        // error log show function
+        function showError() {
+            document.getElementById('errorLog').style.display = 'block';
+        }
 
-</script>
+    </script>
 </body>
 </html>
