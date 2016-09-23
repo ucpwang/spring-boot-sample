@@ -52,10 +52,10 @@
     <!-- profile > local -->
     <springProfile name="local">
 
-        <logger name="org.thymeleaf" level="debug"/>
-        <logger name="org.thymeleaf.TemplateEngine.CONFIG" level="trace"/>
-        <logger name="org.thymeleaf.TemplateEngine.TIMER" level="trace"/>
-        <logger name="org.thymeleaf.TemplateEngine.cache.TEMPLATE_CACHE" level="trace"/>
+        <logger name="org.thymeleaf" level="info"/>
+        <logger name="org.thymeleaf.TemplateEngine.CONFIG" level="info"/>
+        <logger name="org.thymeleaf.TemplateEngine.TIMER" level="info"/>
+        <logger name="org.thymeleaf.TemplateEngine.cache.TEMPLATE_CACHE" level="info"/>
 
         <root level="debug">
             <appender-ref ref="STDOUT"/>
