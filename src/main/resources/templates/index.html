@@ -6,16 +6,39 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>/index.html</h1>
+                <br>
+                <h3>샘플 코드 관련 링크 모음</h3>
                 <ul>
-                    <li><a target="_blank" href="#" th:href="@{/_hcheck}">/_hcheck</a></li>
-                    <li><a target="_blank" href="#" th:href="@{/logLevel}">/logLevel</a></li>
-                    <li><a target="_blank" href="#" th:href="@{/mv/test;matrixVariable=1}">/mv/{pathVariable};a={matrixVariable}</a></li>
-                    <li><a target="_blank" href="#" th:href="@{/sampleDefError}">/sampleDefError</a></li>
-                    <li><a target="_blank" href="#" th:href="@{/sampleError}">/sampleError</a></li>
+                    <li>
+                        <label>헬스체크 관련</label>
+                        <ul>
+                            <li><a target="_blank" href="#" th:href="@{/_hcheck}">/_hcheck</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <label>로그레벨 관련</label>
+                        <ul>
+                            <li><a target="_blank" href="#" th:href="@{/logLevel}">/logLevel</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <label>메트릭스 베리어블 관련</label>
+                        <ul>
+                            <li><a target="_blank" href="#" th:href="@{/mv/test;matrixVariable=1}">/mv/{pathVariable};a={matrixVariable}</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <label>에러 관련</label>
+                        <ul>
+                            <li><a target="_blank" href="#" th:href="@{/sampleDefError}">/sampleDefError</a></li>
+                            <li><a target="_blank" href="#" th:href="@{/sampleError}">/sampleError</a></li>
+                            <li><a target="_blank" href="#" th:href="@{/error/403}">/error/403</a></li>
+                            <li><a target="_blank" href="#" th:href="@{/error/404}">/error/404</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </body>
 </html>
-

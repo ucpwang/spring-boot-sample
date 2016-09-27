@@ -17,6 +17,7 @@
                 <ul class="nav navbar-nav">
                     <li th:classappend="${menu.id == 'home' ? 'active' : ''}"><a href="#" th:href="@{/}">Home</a></li>
                     <li th:classappend="${menu.id == 'sample' ? 'active' : ''}"><a href="#" th:href="@{/sample}">Sample</a></li>
+                    <li th:classappend="${menu.id == 'admin' ? 'active' : ''}"><a href="#" th:href="@{/admin}">Admin</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li sec:authorize="isAnonymous()"><a href="/login" th:href="@{/login}">Login</a></li>

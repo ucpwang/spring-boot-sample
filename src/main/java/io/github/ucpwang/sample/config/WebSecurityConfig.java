@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configurers.provisioning.InMemoryUserDetailsManagerConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -16,6 +17,24 @@ import javax.annotation.Resource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Resource
+    private ApplicationProperties applicationProperties;
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        final String[] noAuthRequestMappings = new String[] {
+                // public
+                "/webjars/**", "/css/**", "/images/**", "/js/**",
+
+                // error
+                "/error/**",
+
+                // ETC
+                "/_hcheck",
+        };
+        web.ignoring().antMatchers(noAuthRequestMappings);
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -23,17 +42,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // ROOT
                 "/", "/main", "/home",
 
-                // public
-                "/webjars/**", "/css/**", "/images/**", "/js/**", "/robots.txt",
-
-                // error
-                "/error/**",
-
-                // ETC
-                "/_hcheck", "/logLevel", "/sampleError"
+                // sample
+                "/logLevel", "/mv/**", "/sampleDefError", "/sampleError"
         };
 
         http.authorizeRequests()
+
+                .antMatchers("/sample/**").access("hasAnyRole('USER', 'ADMIN')")
+
+                .antMatchers("/admin/**").access("hasRole('ADMIN')")
 
                 .antMatchers(noAuthRequestMappings).permitAll()
 
@@ -46,21 +63,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .loginPage("/login")
                     .loginProcessingUrl("/login")
                     .defaultSuccessUrl("/")
+                    // TODO .successHandler().failureHandler()
                     .usernameParameter("user.id")
                     .passwordParameter("user.password")
 
                 .and()
                     .logout()
                     .logoutUrl("/logout")
-                    .logoutSuccessUrl("/");
-
-        //http.exceptionHandling().accessDeniedPage("/403.html");
-        http.exceptionHandling().accessDeniedPage("/");
-        http.sessionManagement().invalidSessionUrl("/");
+                    .logoutSuccessUrl("/")
+                .and().exceptionHandling().accessDeniedPage("/error/403")
+                .and().sessionManagement().invalidSessionUrl("/");
     }
-
-    @Resource
-    private ApplicationProperties applicationProperties;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -69,16 +82,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         InMemoryUserDetailsManagerConfigurer<AuthenticationManagerBuilder> inMemoryUserDetailsManagerConfigurer = auth.inMemoryAuthentication();
         applicationProperties.getAdmins().forEach(user ->
-                inMemoryUserDetailsManagerConfigurer.withUser((String) user.get("id")).password((String) user.get("pw")).roles("ADMIN", "USER").and()
+                inMemoryUserDetailsManagerConfigurer
+                        .withUser((String) user.get("id"))
+                        .password((String) user.get("pw"))
+                        .roles("ADMIN", "USER")
         );
 
-        inMemoryUserDetailsManagerConfigurer.withUser("guest").password("guest").roles("USER");
+        inMemoryUserDetailsManagerConfigurer
+                .withUser("guest")
+                .password("guest")
+                .roles("USER");
 
     }
 
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring().antMatchers("/css/**", "/images/**", "/js/**", "/robots.txt");
-//    }
+
 
 }
