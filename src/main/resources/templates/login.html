@@ -52,6 +52,11 @@
                 }
             });
 
+            setTimeout(function() {
+                $('input[name="user.id"]').focus();
+            }, 500);
+
+
             /*
             비동기 로그인시 애니메이션 관련
             $('.login').submit(function() {
